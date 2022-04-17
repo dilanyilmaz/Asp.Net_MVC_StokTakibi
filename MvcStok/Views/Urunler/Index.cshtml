@@ -1,0 +1,31 @@
+﻿@using MvcStok.Models.Entity
+@model List<Tbl_Urunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Urun id</th>
+        <th>Urun Adı</th>
+        <th>Urun Markası</th>
+        <th>Urun Kategori</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+    </tr>
+    <tbody>
+        @foreach(var urunler in Model)
+            {
+                <tr>
+                    <td>@urunler.Urunid</td>
+                    <td>@urunler.Urunad</td>
+                    <td>@urunler.Marka</td>
+                    <td>@urunler.Tbl_Kategori.Kategoriad</td>
+                    <td>@urunler.Fiyat</td>
+                    <td>@urunler.Stok</td>
+                </tr>
+            }
+    </tbody>
+</table>
+<a href="YeniUrunEkle" class="btn btn-primary">Yeni Ürün Ekle</a>
