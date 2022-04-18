@@ -47,5 +47,5 @@ namespace MvcStok.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-    }
+    }  
 }
