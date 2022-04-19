@@ -11,10 +11,14 @@ namespace MvcStok.Controllers
     {
         // GET: Musteriler
         Db_MvcStokTakibiEntities db = new Db_MvcStokTakibiEntities();   
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var degerler = db.Tbl_Musteri.ToList(); 
-            return View(degerler);
+            var degerler = from d in db.Tbl_Musteri select d;
+            if (!string.IsNullOrEmpty(p))
+            {
+                degerler = degerler.Where(m => m.Musteriad.Contains(p));
+            }
+            return View(degerler.ToList());
         }
         [HttpGet]
         public ActionResult MusteriEkle()
